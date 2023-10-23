@@ -66,7 +66,7 @@ Ensure to have the following prerequisites before starting:
 
 **Prerequisites:**
 
-- [Node.js](https://nodejs.org/en/download): Install Node.js in the system.
+- **Node.js:** Install [Node.js](https://nodejs.org/en/download) in the system.
 
 **Installation Steps:**
 
@@ -85,7 +85,7 @@ Ensure to have the following prerequisites before starting:
    - Change the working directory to the cloned project's folder:
 
      ```
-     cd ThoughWave
+     cd ThoughtWave
      ```
 
    - Use npm to install project dependencies. Run:
@@ -97,7 +97,7 @@ Ensure to have the following prerequisites before starting:
 3. **Set Up MongoDB:**
 
    - Ensure MongoDB is installed and running. If not, download and install it from [here](https://www.mongodb.com/download-center/community/releases).
-   - Use either MongoDB Compass or the MongoDB shell to interact with the database.
+   - Use either the [MongoDB Compass](https://www.mongodb.com/try/download/compass) or the [MongoDB shell](https://www.mongodb.com/try/download/shell) to interact with the database.
 
 4. **Configure the Environment:**
 
@@ -111,14 +111,12 @@ Ensure to have the following prerequisites before starting:
      npm start
      ```
 
-   - The application should be accessible at `http://localhost:3001` in the web browser.
+   - The application should be accessible at `http://localhost:3001` in the web browser but please use an API testing tool.
 
 6. **Testing with Insomnia:**
    - If using Insomnia for API testing, import the project's API configuration from the project directory, if available.
 
-The ThoughtWave project is now set up and ready to run. It can be accessed in the web browser, and there is the option to test its API endpoints using tools like Insomnia or Postman.
-
-These instructions should help with installing and configuring the project.
+The ThoughtWave project is now set up and ready to run. It can be open in the web browser but please test its API endpoints using tools such as Insomnia or Postman.
 
 ## Testing
 
