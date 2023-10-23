@@ -45,12 +45,8 @@ module.exports = {
       // Create a new thought by inserting the request body into the database
       const thought = await Thought.create(req.body);
 
-      // Update the user who created this thought by adding the thought's ID to their 'Thoughts' array
-      const user = await User.findOneAndUpdate(
-        { _id: req.body.userId },
-        { $addToSet: { Thoughts: thought._id } },
-        { new: true }
-      );
+      // Find the user by their 'username'
+      const user = await User.findOne({ username: req.body.username });
 
       // Check if the user is found or not
       if (!user) {
@@ -59,6 +55,10 @@ module.exports = {
           message: "Thought is created, but there is no user with that ID",
         });
       }
+
+      // Add the thought's ID to the user's 'Thoughts' array
+      user.thoughts.push(thought._id);
+      await user.save();
 
       // If the thought is successfully created and the user's 'Thoughts' array is updated, respond with a success message
       res.json("Thought successfully created!");
