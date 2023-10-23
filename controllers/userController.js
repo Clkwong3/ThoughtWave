@@ -4,7 +4,7 @@ const User = require("../model/User");
 // Export an object with methods for handling user data
 module.exports = {
   // Get all users from the database
-  // Endpoint URL: /api/users 
+  // Endpoint URL: /api/users
   async getUsers(req, res) {
     try {
       // Use the User model's "find" method to get all users
@@ -48,6 +48,56 @@ module.exports = {
       const dbUserData = await User.create(req.body);
       // Respond with the newly created user data in JSON format
       res.json(dbUserData);
+    } catch (err) {
+      // If there's an error, respond with a 500 status code and the error message
+      res.status(500).json(err);
+    }
+  },
+
+  // Update an existing user by their ID
+  // Endpoint URL: /api/users/:userId
+  async updateUser(req, res) {
+    try {
+      // Use the User model's "findOneAndUpdate" method to find and update a user by their ID
+      // req.params.userId is the user's ID from the URL
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $set: req.body }, // Update the user's data with the request body
+        { new: true } // Return the updated user data
+      );
+
+      // Check if the user is found and updated or not
+      if (!updatedUser) {
+        // If not found, respond with a 404 status code and a message
+        return res.status(404).json({ message: "No user with that ID" });
+      }
+
+      // Respond with the updated user data in JSON format
+      res.json(updatedUser);
+    } catch (err) {
+      // If there's an error, respond with a 500 status code and the error message
+      res.status(500).json(err);
+    }
+  },
+
+  // Delete a user by their ID
+  // Endpoint URL: /api/users/:userId
+  async deleteUser(req, res) {
+    try {
+      // Use the User model's "findOneAndDelete" method to find and delete a user by their ID
+      // req.params.userId is the user's ID from the URL
+      const deletedUser = await User.findOneAndDelete({
+        _id: req.params.userId,
+      });
+
+      // Check if the user is found and deleted or not
+      if (!deletedUser) {
+        // If not found, respond with a 404 status code and a message
+        return res.status(404).json({ message: "No user with that ID" });
+      }
+
+      // Respond with a message indicating the successful deletion
+      res.json({ message: "User deleted successfully" });
     } catch (err) {
       // If there's an error, respond with a 500 status code and the error message
       res.status(500).json(err);
