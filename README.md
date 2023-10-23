@@ -56,7 +56,7 @@ To interact effectively with ThoughtWave, ensure the presence of the following t
 
 7. **Terminal or Command Prompt:** Use the command line to run the application, install packages, and execute various scripts.
 
-These tools should cover the basic requirements for interacting with your project, but specific tools may vary depending on your project's details and your personal preferences.
+These tools should cover the basic requirements for interacting with this project, but specific tools may vary depending on the project's details and other personal preferences.
 
 ## Installation
 
