@@ -103,4 +103,50 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
+  // Add a new friend to a user's friend list
+  // Endpoint URL: /api/users/:userId/friends/:friendId
+  async addFriend(req, res) {
+    try {
+      // Find and update a user by their ID to add a new friend
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $addToSet: { friends: req.params.friendId } },
+        { new: true }
+      );
+
+      // Check if the user is found or not
+      if (!user) {
+        return res.status(404).json({ message: "No user with that ID" });
+      }
+
+      // Respond with the updated user data in JSON format
+      res.json(user);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
+  // Remove a friend from a user's friend list
+  // Endpoint URL: /api/users/:userId/friends/:friendId
+  async removeFriend(req, res) {
+    try {
+      // Find and update a user by their ID to remove a friend
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $pull: { friends: req.params.friendId } },
+        { new: true }
+      );
+
+      // Check if the user is found or not
+      if (!user) {
+        return res.status(404).json({ message: "No user with that ID" });
+      }
+
+      // Respond with the updated user data in JSON format
+      res.json(user);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
 };
