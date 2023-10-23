@@ -165,7 +165,7 @@ module.exports = {
       // Find and update a thought by its unique ID to remove the specified reaction from its 'reactions' array
       const thought = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $pull: { reactions: { responseId: req.params.responseId } } },
+        { $pull: { reactions: { reactionId: req.params.reactionId } } },
         { runValidators: true, new: true }
       );
 
