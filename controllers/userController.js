@@ -1,5 +1,6 @@
-// Import the User model from the "../Models/User" file
+// Import the required modules
 const User = require("../model/User");
+const Thought = require("../model/Thought");
 
 // Export an object with methods for handling user data
 module.exports = {
@@ -95,6 +96,9 @@ module.exports = {
         // If not found, respond with a 404 status code and a message
         return res.status(404).json({ message: "No user with that ID" });
       }
+
+      // Delete the user's thoughts
+      await Thought.deleteMany({ username: deletedUser.username });
 
       // Respond with a message indicating the successful deletion
       res.json({ message: "User deleted successfully" });
