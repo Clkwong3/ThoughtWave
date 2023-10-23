@@ -4,6 +4,8 @@ const {
   getUsers,
   getSingleUser,
   createUser,
+  updateUser,
+  deleteUser,
 } = require("../../controllers/userController"); // Import functions from userController
 
 // Define routes and their associated functions
@@ -11,9 +13,9 @@ const {
 // http://localhost:3001/api/users
 router.route("/").get(getUsers).post(createUser);
 
-// Handle GET requests with getSingleUser
+// Handle GET, PUT, and DELETE requests for a single user by ID
 // http://localhost:3001/api/users/:userId
-router.route("/:userId").get(getSingleUser);
+router.route("/:userId").get(getSingleUser).put(updateUser).delete(deleteUser);
 
 // Export the router
 module.exports = router;
