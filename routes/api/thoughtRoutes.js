@@ -13,21 +13,21 @@ const {
 // Define routes for the root URL, e.g., '/thoughts'
 router
   .route("/")
-  .get(getThoughts) // Handles GET requests to fetch thoughts
-  .post(createThought); // Handles POST requests to create a new thought
+  .get(getThoughts) // GET: http://localhost:3001/thoughts
+  .post(createThought); // POST: http://localhost:3001/thoughts
 
 // Define routes for URLs like '/thoughts/:thoughtId'
 router
   .route("/:thoughtId")
-  .get(getSingleThought) // Handles GET requests to fetch a single thought
-  .put(updateThought) // Handles PUT requests to update a thought
-  .delete(deleteThought); // Handles DELETE requests to delete a thought
+  .get(getSingleThought) // GET: http://localhost:3001/thoughts/:thoughtId
+  .put(updateThought) // PUT: http://localhost:3001/thoughts/:thoughtId
+  .delete(deleteThought); // DELETE: http://localhost:3001/thoughts/:thoughtId
 
 // Define a route for reactions on a specific thought
-router.route("/:thoughtId/reactions").post(addReaction); // Handles POST requests to add a reaction to a thought
+router.route("/:thoughtId/reactions").post(addReaction); // POST: http://localhost:3001/thoughts/:thoughtId/reactions
 
 // Define a route for deleting a specific reaction on a thought
-router.route("/:thoughtId/reactions/:reactionId").delete(removeReaction); // Handles DELETE requests to remove a specific reaction
+router.route("/:thoughtId/reactions/:reactionId").delete(removeReaction); // DELETE: http://localhost:3001/thoughts/:thoughtId/reactions/:reactionId
 
 // Export the router so it can be used in your Express application
 module.exports = router;

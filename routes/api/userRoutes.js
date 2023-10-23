@@ -8,9 +8,11 @@ const {
 
 // Define routes and their associated functions
 // Handle GET requests with getUsers and POST requests with createUser
+// http://localhost:3001/users
 router.route("/").get(getUsers).post(createUser);
 
 // Handle GET requests with getSingleUser
+// http://localhost:3001/users/:userId
 router.route("/:userId").get(getSingleUser);
 
 // Export the router
