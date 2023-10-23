@@ -99,7 +99,18 @@ module.exports = {
   // Endpoint URL: /api/thoughts/:thoughtId
   async deleteThought(req, res) {
     try {
-      // Find and remove a thought by its unique ID
+      // Find the user associated with the thought
+      const user = await User.findOne({ thoughts: req.params.thoughtId });
+
+      // Check if the user is found or not
+      if (!user) {
+        // If not found, respond with a 404 status code and a message
+        return res.status(404).json({
+          message: "There is no user with that ID",
+        });
+      }
+
+      // Remove the thought by its ID
       const thought = await Thought.findOneAndRemove({
         _id: req.params.thoughtId,
       });
@@ -110,20 +121,9 @@ module.exports = {
         return res.status(404).json({ message: "No thought with this ID" });
       }
 
-      // Find and update the associated user to remove the deleted thought's ID from their 'Thoughts' array
-      const user = await User.findOneAndUpdate(
-        { Thoughts: req.params.thoughtId },
-        { $pull: { Thoughts: req.params.thoughtId } },
-        { new: true }
-      );
-
-      // Check if the user is found or not
-      if (!user) {
-        // If not found, respond with a 404 status code and a message
-        return res.status(404).json({
-          message: "There is no user with that ID",
-        });
-      }
+      // Update the user's 'Thoughts' array to remove the deleted thought's ID
+      user.thoughts.pull(thought._id);
+      await user.save();
 
       // If the thought is successfully deleted and the user's 'Thoughts' array is updated, respond with a success message
       res.json({ message: "Thought successfully deleted!" });
