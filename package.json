@@ -4,9 +4,9 @@
   "description": "An API for a dynamic social network enabling users to share thoughts, interact, and forge connections.",
   "main": "server.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server",
-    "dev": "nodemon server",
-    "seed": "node utils/seed"
+    "dev": "nodemon server"
   },
   "keywords": [],
   "author": "",
