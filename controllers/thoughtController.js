@@ -75,7 +75,7 @@ module.exports = {
     try {
       // Find and update a thought by its unique ID, using the data provided in the request body
       const thought = await Thought.findOneAndUpdate(
-        { _id: req.params.ThoughtId },
+        { _id: req.params.thoughtId },
         { $set: req.body },
         { runValidators: true, new: true }
       );
@@ -137,11 +137,11 @@ module.exports = {
   // Endpoint URL: /api/thoughts/:thoughtId/reactions
   async addReaction(req, res) {
     try {
-      // Find and update a thought by its unique ID to add the provided response to its 'responses' array
+      // Find and update a thought by its unique ID to add the provided response to its 'reactions' array
       const thought = await Thought.findOneAndUpdate(
-        { _id: req.params.ThoughtId },
-        { $addToSet: { responses: req.body } },
-        { runValidators: true, new: true }
+        { _id: req.params.thoughtId },
+        { $addToSet: { reactions: req.body } },
+        { new: true }
       );
 
       // Check if the thought is found or not
@@ -159,12 +159,12 @@ module.exports = {
   },
 
   // Remove a reaction from a thought
-  // Endpoint URL: /api/thoughts/:thoughtId/reactions/:responseId
+  // Endpoint URL: /api/thoughts/:thoughtId/reactions/:reactionId
   async removeReaction(req, res) {
     try {
       // Find and update a thought by its unique ID to remove the specified reaction from its 'reactions' array
       const thought = await Thought.findOneAndUpdate(
-        { _id: req.params.ThoughtId },
+        { _id: req.params.thoughtId },
         { $pull: { reactions: { responseId: req.params.responseId } } },
         { runValidators: true, new: true }
       );
