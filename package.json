@@ -1,0 +1,21 @@
+{
+  "name": "thoughtwave",
+  "version": "1.0.0",
+  "description": "An API for a dynamic social network enabling users to share thoughts, interact, and forge connections.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server",
+    "seed": "node utils/seed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
