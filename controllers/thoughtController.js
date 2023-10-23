@@ -101,7 +101,7 @@ module.exports = {
     try {
       // Find and remove a thought by its unique ID
       const thought = await Thought.findOneAndRemove({
-        _id: req.params.ThoughtId,
+        _id: req.params.thoughtId,
       });
 
       // Check if the thought is found or not
@@ -112,8 +112,8 @@ module.exports = {
 
       // Find and update the associated user to remove the deleted thought's ID from their 'Thoughts' array
       const user = await User.findOneAndUpdate(
-        { Thoughts: req.params.ThoughtId },
-        { $pull: { Thoughts: req.params.ThoughtId } },
+        { Thoughts: req.params.thoughtId },
+        { $pull: { Thoughts: req.params.thoughtId } },
         { new: true }
       );
 
@@ -121,7 +121,7 @@ module.exports = {
       if (!user) {
         // If not found, respond with a 404 status code and a message
         return res.status(404).json({
-          message: "Thought is created, but there is no user with that ID",
+          message: "There is no user with that ID",
         });
       }
 
