@@ -1,5 +1,5 @@
 // Import the User model from the "../Models/User" file
-const User = require("../Models/User");
+const User = require("../model/User");
 
 // Export an object with methods for handling user data
 module.exports = {
