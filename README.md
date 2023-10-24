@@ -204,7 +204,7 @@ Here are a variety of resources that can be immensely helpful in your journey wi
 
 **Project Resources:**
 
-- [Project Walkthrough Video](link-to-your-video): A video that provides a walkthrough of the project, demonstrating its features and functionality.
+- [Project Walkthrough Video](https://www.youtube.com/watch?v=k7RyAoH01AQ): A video that provides a walkthrough of the project, demonstrating its features and functionality.
 
 - [GitHub Repository](https://github.com/Clkwong3/ThoughtWave): Link to the GitHub repository for this project.
 
