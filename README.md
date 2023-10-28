@@ -200,7 +200,7 @@ Feel free to explore the project and its features by making requests to these en
 
 ## Links
 
-Here are a variety of resources that can be immensely helpful in your journey with the ThoughtWave project. 
+Here are a variety of resources that can be immensely helpful in my journey with the ThoughtWave project. 
 
 **Project Resources:**
 
